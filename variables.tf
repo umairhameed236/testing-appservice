@@ -6,7 +6,7 @@ variable "app_service_plan_name" {
 
 variable "app_service_name" {
     type = string
-  default="demo-app-service"
+  default="webapp-first"
 }
 
 variable "location" {

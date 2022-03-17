@@ -13,11 +13,8 @@ resource "azurerm_app_service" "webapp" {
   resource_group_name = var.resource_group_name
   app_service_plan_id = azurerm_app_service_plan.appserviceplan.id
   
-  
-  source_control {
-    repo_url           = "https://github.com/Azure-Samples/nodejs-docs-hello-world"
-    branch             = "master"
-    manual_integration = true
-    use_mercurial      = false
+  site_config {
+    linux_fx_version = "DOTNETCORE|5.0"
+    dotnet_framework_version = "v5.0"
   }
 }

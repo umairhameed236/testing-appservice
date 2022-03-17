@@ -33,6 +33,7 @@ steps:
     backendAzureRmStorageAccountName: 'tfstatesterraform'
     backendAzureRmContainerName: 'terraformcontainer'
     backendAzureRmKey: 'terraform.tfstate'
+    commandOptions: '-var resource_group_name=$(vg-rgname) -var location=$(vg-location) -var app_service_plan_name=$(vg-app_service_plan_name) -var app_service_name=$(vg-app_service_name)'
 - task: TerraformTaskV2@2
   inputs:
     provider: 'azurerm'

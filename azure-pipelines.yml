@@ -40,7 +40,7 @@ steps:
   inputs:
     provider: 'azurerm'
     command: 'plan'
-    commandOptions: '-var=resource_group_name=$(resource_group_name) -var=location=$location) -var=app_service_plan_name=$(app_service_plan_name) -var=app_service_name=$(app_service_name)'
+    commandOptions: '-var=$(resource_group_name) -var=$(location) -var=$(app_service_plan_name) -var=$(app_service_name)'
     environmentServiceNameAzureRM: 'Azure Pass - Sponsorship(1)(291cf271-21f2-49e1-ad94-bc8a4daa51db)'
 - task: TerraformTaskV2@2
   inputs:

@@ -9,7 +9,7 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 variables:
-group: 'testing-appservice'
+-group: 'testing-appservice'
 steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'

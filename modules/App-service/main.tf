@@ -14,7 +14,7 @@ resource "azurerm_app_service" "webapp" {
   app_service_plan_id = azurerm_app_service_plan.appserviceplan.id
   
   site_config {
-    linux_fx_version = "DOTNETCORE|5.0"
-    dotnet_framework_version = "v5.0"
+        linux_fx_version = "DOTNETCORE|3.1"
+
   }
 }

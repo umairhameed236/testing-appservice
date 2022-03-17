@@ -20,9 +20,12 @@ provider "azurerm" {
   features {}
 subscription_id = "291cf271-21f2-49e1-ad94-bc8a4daa51db"
 }
+locals {
+  rg_name    = "${var.resource_group_name}
+}
 module "Module_RG" {
   source = "github.com/umairhameed236/testing-appservice/modules/resource-group"
-  name = var.resource_group_name
+  name = local.rg_name
   location = var.location
  
  

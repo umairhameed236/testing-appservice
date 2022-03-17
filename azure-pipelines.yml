@@ -1,0 +1,50 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+variables:
+resource_group_name: 'Terraform-demo-appservice"'
+location: 'West US'
+app_service_plan_name: 'Demo-Service-Plan'
+app_service_name: 'Demo-app-service'
+
+steps:
+- script: echo Hello, world!
+  displayName: 'Run a one-line script'
+
+- script: |
+    echo Add other tasks to build, test, and deploy your project.
+    echo See https://aka.ms/yaml
+  displayName: 'Run a multi-line script'
+
+- task: TerraformInstaller@0
+  inputs:
+    terraformVersion: 'latest'
+
+- task: TerraformTaskV2@2
+  inputs:
+    provider: 'azurerm'
+    command: 'init'
+    backendServiceArm: 'Azure Pass - Sponsorship(1)(291cf271-21f2-49e1-ad94-bc8a4daa51db)'
+    backendAzureRmResourceGroupName: 'resourcegroup-tfstate'
+    backendAzureRmStorageAccountName: 'tfstatesterraform'
+    backendAzureRmContainerName: 'terraformcontainer'
+    backendAzureRmKey: 'terraform.tfstate'
+- task: TerraformTaskV2@2
+  inputs:
+    provider: 'azurerm'
+    command: 'plan'
+    commandOptions: '-var=resource_group_name=$(resource_group_name) -var=location=$location) -var=app_service_plan_name=$(app_service_plan_name) -var=app_service_name=$(app_service_name)'
+    environmentServiceNameAzureRM: 'Azure Pass - Sponsorship(1)(291cf271-21f2-49e1-ad94-bc8a4daa51db)'
+- task: TerraformTaskV2@2
+  inputs:
+    provider: 'azurerm'
+    command: 'apply'
+    commandOptions: '-var=resource_group_name=$(resource_group_name) -var=location=$location) -var=app_service_plan_name=$(app_service_plan_name) -var=app_service_name=$(app_service_name)'
+    environmentServiceNameAzureRM: 'Azure Pass - Sponsorship(1)(291cf271-21f2-49e1-ad94-bc8a4daa51db)'

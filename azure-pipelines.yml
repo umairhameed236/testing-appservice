@@ -38,11 +38,11 @@ steps:
   inputs:
     provider: 'azurerm'
     command: 'plan'
-    commandOptions: args='-var resource_group_name=$(vg-rgname) -var location=$(vg-location) -var app_service_plan_name=$(vg-app_service_plan_name) -var app_service_name=$(vg-app_service_name)'
+    commandOptions: args='-var resource_group_name=$(vg-rgname) -var app_service_plan_name=$(vg-app_service_plan_name) -var app_service_name=$(vg-app_service_name)'
     environmentServiceNameAzureRM: 'Azure Pass - Sponsorship(1)(291cf271-21f2-49e1-ad94-bc8a4daa51db)'
 - task: TerraformTaskV2@2
   inputs:
     provider: 'azurerm'
     command: 'apply'
-    commandOptions: '-var resource_group_name=$(vg-rgname) -var location=$(vg-location) -var app_service_plan_name=$(vg-app_service_plan_name) -var app_service_name=$(vg-app_service_name)'
+    commandOptions: '-var resource_group_name=$(vg-rgname) -var app_service_plan_name=$(vg-app_service_plan_name) -var app_service_name=$(vg-app_service_name)'
     environmentServiceNameAzureRM: 'Azure Pass - Sponsorship(1)(291cf271-21f2-49e1-ad94-bc8a4daa51db)'

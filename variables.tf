@@ -11,7 +11,7 @@ variable "app_service_name" {
 
 variable "location" {
     type = string
-  
+  default="West US"
 }
 
 

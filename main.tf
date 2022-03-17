@@ -1,6 +1,6 @@
 terraform {
 
-  required_version = ">=0.19"
+  required_version = ">=0.17"
 
   required_providers {
     azurerm = {
@@ -8,6 +8,12 @@ terraform {
       version = "~>2.0"
     }
   }
+  backend "azurerm" {
+resource_group_name  = "resourcegroup-tfstate"
+        storage_account_name = "tfstatesterraform"
+        container_name       = "terraformcontainer"
+        key                  = "terraform.tfstate"
+    }
 }
 
 provider "azurerm" {
